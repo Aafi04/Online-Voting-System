@@ -2,10 +2,6 @@
 
 This is an online voting system built using Java Servlets and JSP. The project allows users to register, log in, and vote for candidates. The system also includes a simple user management and voting service.
 
-## Project Structure
-
-## Getting Started
-
 ### Prerequisites
 
 - Java 11
