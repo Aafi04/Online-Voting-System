@@ -27,4 +27,8 @@
         <servlet-name>VoteServlet</servlet-name>
         <url-pattern>/vote</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>welcome.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
