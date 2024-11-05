@@ -8,6 +8,13 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Handle GET request
+        response.getWriter().append("LoginServlet at: ").append(request.getContextPath());
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
