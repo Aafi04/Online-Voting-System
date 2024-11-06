@@ -10,8 +10,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Handle GET request
-        response.getWriter().append("LoginServlet at: ").append(request.getContextPath());
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
     @Override
