@@ -48,7 +48,6 @@ This is an online voting system built using Java Servlets and JSP. The project a
 
 ### JSP Pages
 
-- [`index.jsp`](src/main/webapp/index.jsp): Home page.
 - [`login.jsp`](src/main/webapp/login.jsp): Login page.
 - [`register.jsp`](src/main/webapp/register.jsp): Registration page.
 - [`success.jsp`](src/main/webapp/success.jsp): Registration success page.
