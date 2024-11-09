@@ -17,9 +17,13 @@ public class JdbcUserDao implements UserDao {
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection
                         .prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
+            System.out.println("Saving user: " + user.getUsername());
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
-            statement.executeUpdate();
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("A new user was inserted successfully!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -48,4 +52,3 @@ public class JdbcUserDao implements UserDao {
         return user;
     }
 }
-
