@@ -1,12 +1,13 @@
 com\example\voting\UserService.class
 com\example\voting\UserDao.class
+com\example\voting\LoginServlet.class
+com\example\voting\VoteService.class
+com\example\voting\DatabaseConnectionTest.class
+com\example\voting\VoteServlet.class
 com\example\voting\JdbcVoteDao.class
 com\example\voting\RegisterServlet.class
-com\example\voting\LoginServlet.class
 com\example\voting\User.class
 com\example\voting\VoteDao.class
 com\example\voting\JdbcUserDao.class
-com\example\voting\VoteService.class
 com\example\voting\Vote.class
 com\example\voting\VoteServiceImpl.class
-com\example\voting\VoteServlet.class
