@@ -30,6 +30,6 @@ public class RegisterServlet extends HttpServlet {
         userDao.saveUser(user);
 
         // Redirect to a success page
-        response.sendRedirect("registrationSuccess.jsp");
+        response.sendRedirect("success.jsp");
     }
 }
