@@ -1,12 +1,14 @@
 package com.example.voting;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import java.io.IOException;
 
+@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+    private UserDao userDao = new JdbcUserDao();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,11 +26,10 @@ public class RegisterServlet extends HttpServlet {
         user.setUsername(username);
         user.setPassword(password);
 
-        // Implement registration logic using UserService
-        UserService userService = new UserService(new JdbcUserDao());
-        userService.registerUser(user);
+        // Save the user using UserDao
+        userDao.saveUser(user);
 
-        // Redirect to a success page or display a success message
-        response.sendRedirect("success.jsp");
+        // Redirect to a success page
+        response.sendRedirect("registrationSuccess.jsp");
     }
 }
