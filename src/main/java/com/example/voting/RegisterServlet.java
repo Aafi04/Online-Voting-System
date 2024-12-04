@@ -5,7 +5,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private UserDao userDao = new JdbcUserDao();
 
