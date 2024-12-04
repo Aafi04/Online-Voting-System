@@ -29,18 +29,21 @@ public class RegisterServlet extends HttpServlet {
         String dbUser = "root";
         String dbPassword = "root";
 
+        Connection connection = null;
+        PreparedStatement statement = null;
+
         try {
             // Load the JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a connection
-            Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+            connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
             // Create a SQL query
             String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
             // Create a PreparedStatement
-            PreparedStatement statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(sql);
             statement.setString(1, username);
             statement.setString(2, password);
 
@@ -51,12 +54,20 @@ public class RegisterServlet extends HttpServlet {
                 System.out.println("A new user has been inserted successfully.");
             }
 
-            // Close the connection
-            statement.close();
-            connection.close();
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            // Close the resources
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         // Redirect to a success page or display a success message
