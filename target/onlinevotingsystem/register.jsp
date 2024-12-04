@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Registration Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h2>Registration</h2>
