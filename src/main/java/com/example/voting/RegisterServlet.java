@@ -3,9 +3,12 @@ package com.example.voting;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
-    private UserDao userDao = new JdbcUserDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,17 +24,42 @@ public class RegisterServlet extends HttpServlet {
 
         System.out.println("Received registration request for username: " + username);
 
-        // Create a new User object
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        // Database connection parameters
+        String jdbcURL = "jdbc:mysql://localhost:3306/online_voting_system";
+        String dbUser = "root";
+        String dbPassword = "root";
 
-        // Save the user using UserDao
-        userDao.saveUser(user);
+        try {
+            // Load the JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-        System.out.println("User saved successfully");
+            // Establish a connection
+            Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
-        // Redirect to a success page
+            // Create a SQL query
+            String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
+            // Create a PreparedStatement
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // Execute the query
+            int rows = statement.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("A new user has been inserted successfully.");
+            }
+
+            // Close the connection
+            statement.close();
+            connection.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Redirect to a success page or display a success message
         response.sendRedirect("success.jsp");
     }
 }
