@@ -1,12 +1,14 @@
 package com.example.voting;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import java.io.IOException;
 
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    private UserDao userDao = new JdbcUserDao();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -19,17 +21,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Implement login logic using UserService
-        UserService userService = new UserService(new JdbcUserDao());
-        User user = userService.loginUser(username, password);
+        User user = userDao.getUserByUsername(username);
 
-        // Handle login success or failure
-        if (user != null) {
-            // Redirect to a welcome page or other appropriate page
+        if (user != null && user.getPassword().equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             response.sendRedirect("welcome.jsp");
         } else {
-            // Redirect to an error page or display an error message
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("loginFailed.jsp");
         }
     }
 }
