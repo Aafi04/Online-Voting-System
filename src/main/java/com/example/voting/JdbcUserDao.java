@@ -23,13 +23,14 @@ public class JdbcUserDao implements UserDao {
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("A new user was inserted successfully!");
+            } else {
+                System.out.println("No rows inserted.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Implement the getUserByUsername method as needed
     @Override
     public User getUserByUsername(String username) {
         User user = null;
@@ -42,12 +43,10 @@ public class JdbcUserDao implements UserDao {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
-
                 user.setPassword(resultSet.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Consider logging the error or throwing a custom exception
         }
         return user;
     }
