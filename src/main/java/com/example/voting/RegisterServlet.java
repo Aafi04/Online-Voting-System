@@ -20,6 +20,8 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        System.out.println("Received registration request for username: " + username);
+
         // Create a new User object
         User user = new User();
         user.setUsername(username);
