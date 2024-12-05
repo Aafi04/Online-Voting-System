@@ -60,6 +60,24 @@
         <url-pattern>/set_election_mode</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetCompiledResultsServlet</servlet-name>
+        <servlet-class>com.example.voting.GetCompiledResultsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCompiledResultsServlet</servlet-name>
+        <url-pattern>/get_compiled_results</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetDetailedResultsServlet</servlet-name>
+        <servlet-class>com.example.voting.GetDetailedResultsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDetailedResultsServlet</servlet-name>
+        <url-pattern>/get_detailed_results</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>welcome.html</welcome-file>
         <welcome-file>index.html</welcome-file>

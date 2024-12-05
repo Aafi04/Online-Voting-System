@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Election Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Election Results</h2>
+        <div id="message"></div>
+        
+        <h3>Compiled Results</h3>
+        <div id="compiled_results">
+            <!-- Compiled results will be displayed here -->
+        </div>
+
+        <h3 class="mt-5">Detailed Results</h3>
+        <div id="detailed_results">
+            <!-- Detailed results will be displayed here -->
+        </div>
+
+        <button id="flush_results" class="btn btn-danger mt-5">Flush Results</button>
+    </div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Display success or error message based on URL parameter
+        window.onload = function() {
+            var success = getUrlParameter('success');
+            var messageDiv = document.getElementById('message');
+            if (success === 'true') {
+                messageDiv.innerHTML = '<div class="alert alert-success">Operation completed successfully!</div>';
+            } else if (success === 'false') {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Operation failed. Please try again.</div>';
+            }
+
+            // Fetch and display compiled results
+            fetch('get_compiled_results')
+                .then(response => response.json())
+                .then(data => {
+                    const compiledResultsDiv = document.getElementById('compiled_results');
+                    if (data.length > 0) {
+                        let resultsList = '<ul class="list-group">';
+                        data.forEach(result => {
+                            resultsList += `<li class="list-group-item">Candidate: ${result.candidateName}, Votes: ${result.votes}</li>`;
+                        });
+                        resultsList += '</ul>';
+                        compiledResultsDiv.innerHTML = resultsList;
+                    } else {
+                        compiledResultsDiv.innerHTML = '<p>No results available.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching compiled results:', error));
+
+            // Fetch and display detailed results
+            fetch('get_detailed_results')
+                .then(response => response.json())
+                .then(data => {
+                    const detailedResultsDiv = document.getElementById('detailed_results');
+                    if (data.length > 0) {
+                        let resultsList = '<ul class="list-group">';
+                        data.forEach(result => {
+                            resultsList += `<li class="list-group-item">User: ${result.username}, Candidate: ${result.candidateName}</li>`;
+                        });
+                        resultsList += '</ul>';
+                        detailedResultsDiv.innerHTML = resultsList;
+                    } else {
+                        detailedResultsDiv.innerHTML = '<p>No results available.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching detailed results:', error));
+
+            // Handle flush results button click
+            document.getElementById('flush_results').onclick = function() {
+                fetch('flush_results', { method: 'POST' })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = 'election_results.html?success=true';
+                        } else {
+                            window.location.href = 'election_results.html?success=false';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error flushing results:', error);
+                        window.location.href = 'election_results.html?success=false';
+                    });
+            };
+        };
+    </script>
+</body>
+</html>

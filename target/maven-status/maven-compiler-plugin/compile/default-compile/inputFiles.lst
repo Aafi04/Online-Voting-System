@@ -2,6 +2,7 @@ C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\JdbcVo
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteServiceImpl.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\RegisterServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\Vote.java
+C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\GetDetailedResultsServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\UserService.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\UserDao.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteService.java
@@ -17,4 +18,5 @@ C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\Regist
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteDao.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\AddAdminServlet.java
+C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\GetCompiledResultsServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\SetElectionModeServlet.java
