@@ -4,7 +4,9 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Login Failed</h1>
-    <p>Please check your credentials and try again.</p>
+    <h1>Login Error</h1>
+    <p>There was an error with your login. Please try again.</p>
+    <a href="register">Register</a>
+    <a href="login">Login</a>
 </body>
 </html>

@@ -1,13 +1,16 @@
 package com.example.voting;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class LoginServlet extends HttpServlet {
 
@@ -52,28 +55,26 @@ public class LoginServlet extends HttpServlet {
             // Execute the query
             resultSet = statement.executeQuery();
 
+            // Check if a user was found
             if (resultSet.next()) {
-                // User found, redirect to a welcome page
-                response.sendRedirect("welcome.jsp");
+                // Redirect to dashboard.html on successful login
+                response.sendRedirect("dashboard.html");
             } else {
-                // User not found, redirect to login page with error
-                response.sendRedirect("login.jsp?error=1");
+                // Redirect to error.jsp on login failure
+                response.sendRedirect("error.jsp");
             }
-
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            response.sendRedirect("error.jsp");
         } finally {
-            // Close the resources
+            // Close resources
             try {
-                if (resultSet != null) {
+                if (resultSet != null)
                     resultSet.close();
-                }
-                if (statement != null) {
+                if (statement != null)
                     statement.close();
-                }
-                if (connection != null) {
+                if (connection != null)
                     connection.close();
-                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
