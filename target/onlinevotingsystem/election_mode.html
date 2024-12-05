@@ -1,34 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Election Mode</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Mode - Online Voting System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1em;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2 class="mt-5">Election Mode</h2>
+        <h2 class="text-center mb-4">Election Mode</h2>
         <div id="message"></div>
         
-        <form action="set_election_mode" method="post">
-            <div class="form-group">
-                <label for="mode">Election Mode:</label>
-                <select class="form-control" id="mode" name="mode" required>
-                    <option value="timed">Timed</option>
-                    <option value="timeless">Timeless</option>
-                </select>
+        <div class="card">
+            <div class="card-header">
+                <h3>Set Election Mode</h3>
             </div>
-            <div class="form-group">
-                <label for="start_time">Start Time:</label>
-                <input type="datetime-local" class="form-control" id="start_time" name="start_time">
+            <div class="card-body">
+                <form action="set_election_mode" method="post">
+                    <div class="form-group">
+                        <label for="mode">Election Mode:</label>
+                        <select class="form-control" id="mode" name="mode" required>
+                            <option value="timed">Timed</option>
+                            <option value="timeless">Timeless</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_time">Start Time:</label>
+                        <input type="datetime-local" class="form-control" id="start_time" name="start_time">
+                    </div>
+                    <div class="form-group">
+                        <label for="end_time">End Time:</label>
+                        <input type="datetime-local" class="form-control" id="end_time" name="end_time">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-custom">Set Election Mode</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="end_time">End Time:</label>
-                <input type="datetime-local" class="form-control" id="end_time" name="end_time">
-            </div>
-            <button type="submit" class="btn btn-primary">Set Election Mode</button>
-        </form>
+        </div>
     </div>
+
     <script>
         // Function to get URL parameters
         function getUrlParameter(name) {
