@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidate Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Candidate Management</h2>
+        <div id="message"></div>
+        
+        <h3>Register Candidate</h3>
+        <form action="register_candidate" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="party">Party:</label>
+                <input type="text" class="form-control" id="party" name="party" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register Candidate</button>
+        </form>
+
+        <h3 class="mt-5">Deregister Candidate</h3>
+        <form action="deregister_candidate" method="post">
+            <div class="form-group">
+                <label for="candidate_id">Candidate ID:</label>
+                <input type="text" class="form-control" id="candidate_id" name="candidate_id" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Deregister Candidate</button>
+        </form>
+
+        <h3 class="mt-5">Registered Candidates</h3>
+        <div id="candidates">
+            <!-- Registered candidates will be displayed here -->
+        </div>
+    </div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Display success or error message based on URL parameter
+        window.onload = function() {
+            var success = getUrlParameter('success');
+            var messageDiv = document.getElementById('message');
+            if (success === 'true') {
+                messageDiv.innerHTML = '<div class="alert alert-success">Operation completed successfully!</div>';
+            } else if (success === 'false') {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Operation failed. Please try again.</div>';
+            }
+
+            // Fetch and display registered candidates
+            fetch('get_candidates')
+                .then(response => response.json())
+                .then(data => {
+                    const candidatesDiv = document.getElementById('candidates');
+                    if (data.length > 0) {
+                        let candidatesList = '<ul class="list-group">';
+                        data.forEach(candidate => {
+                            candidatesList += `<li class="list-group-item">ID: ${candidate.id}, Name: ${candidate.name}, Party: ${candidate.party}</li>`;
+                        });
+                        candidatesList += '</ul>';
+                        candidatesDiv.innerHTML = candidatesList;
+                    } else {
+                        candidatesDiv.innerHTML = '<p>No candidates registered.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching candidates:', error));
+        };
+    </script>
+</body>
+</html>

@@ -2,11 +2,15 @@ com\example\voting\UserService.class
 com\example\voting\UserDao.class
 com\example\voting\LoginServlet.class
 com\example\voting\AdminLoginServlet.class
+com\example\voting\RegisterCandidateServlet.class
 com\example\voting\VoteService.class
 com\example\voting\DatabaseConnectionTest.class
 com\example\voting\VoteServlet.class
+com\example\voting\DeregisterCandidateServlet.class
 com\example\voting\JdbcVoteDao.class
+com\example\voting\GetCandidatesServlet.class
 com\example\voting\RegisterServlet.class
+com\example\voting\GetCandidatesServlet$Candidate.class
 com\example\voting\User.class
 com\example\voting\AddAdminServlet.class
 com\example\voting\VoteDao.class

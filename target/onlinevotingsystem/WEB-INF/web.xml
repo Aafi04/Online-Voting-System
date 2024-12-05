@@ -43,6 +43,14 @@
         <servlet-name>AddAdminServlet</servlet-name>
         <url-pattern>/add_admin</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RegisterCandidateServlet</servlet-name>
+        <servlet-class>com.example.voting.RegisterCandidateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterCandidateServlet</servlet-name>
+        <url-pattern>/register_candidate</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>welcome.html</welcome-file>
