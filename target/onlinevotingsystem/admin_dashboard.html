@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Admin Dashboard</h2>
+        <div id="message"></div>
+        <h3>Add New Admin</h3>
+        <form action="add_admin" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Admin</button>
+        </form>
+        <!-- Add other admin functionalities here -->
+    </div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Display success or error message based on URL parameter
+        window.onload = function() {
+            var success = getUrlParameter('success');
+            var messageDiv = document.getElementById('message');
+            if (success === 'true') {
+                messageDiv.innerHTML = '<div class="alert alert-success">Admin added successfully!</div>';
+            } else if (success === 'false') {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Failed to add admin. Please try again.</div>';
+            }
+        };
+    </script>
+</body>
+</html>
