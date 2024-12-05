@@ -63,6 +63,15 @@
         <url-pattern>/update_profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.example.voting.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/change_password</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>welcome.html</welcome-file>
         <welcome-file>index.html</welcome-file>

@@ -23,3 +23,4 @@ com\example\voting\User.class
 com\example\voting\AddAdminServlet.class
 com\example\voting\VoteDao.class
 com\example\voting\VoteServiceImpl.class
+com\example\voting\ChangePasswordServlet.class
