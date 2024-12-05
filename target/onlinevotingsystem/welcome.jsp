@@ -8,7 +8,9 @@
 <body>
     <div class="container">
         <h2 class="mt-5">Welcome</h2>
-        <p>You have successfully logged in!</p>
+        <p>Welcome to the Online Voting System!</p>
+        <a href="register" class="btn btn-primary">Register</a>
+        <a href="login" class="btn btn-secondary">Login</a>
     </div>
 </body>
 </html>

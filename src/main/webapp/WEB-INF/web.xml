@@ -29,7 +29,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>welcome.jsp</welcome-file>
+        <welcome-file>welcome.html</welcome-file>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>register.html</welcome-file>

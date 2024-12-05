@@ -1,5 +1,6 @@
 body {
     background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
 .container {
@@ -9,4 +10,9 @@ body {
 
 h2 {
     margin-bottom: 20px;
+    color: #333;
+}
+
+.btn {
+    margin-right: 10px;
 }
