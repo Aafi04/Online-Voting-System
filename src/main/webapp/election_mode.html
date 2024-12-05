@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Election Mode</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Election Mode</h2>
+        <div id="message"></div>
+        
+        <form action="set_election_mode" method="post">
+            <div class="form-group">
+                <label for="mode">Election Mode:</label>
+                <select class="form-control" id="mode" name="mode" required>
+                    <option value="timed">Timed</option>
+                    <option value="timeless">Timeless</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start_time">Start Time:</label>
+                <input type="datetime-local" class="form-control" id="start_time" name="start_time">
+            </div>
+            <div class="form-group">
+                <label for="end_time">End Time:</label>
+                <input type="datetime-local" class="form-control" id="end_time" name="end_time">
+            </div>
+            <button type="submit" class="btn btn-primary">Set Election Mode</button>
+        </form>
+    </div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Display success or error message based on URL parameter
+        window.onload = function() {
+            var success = getUrlParameter('success');
+            var messageDiv = document.getElementById('message');
+            if (success === 'true') {
+                messageDiv.innerHTML = '<div class="alert alert-success">Election mode set successfully!</div>';
+            } else if (success === 'false') {
+                messageDiv.innerHTML = '<div class="alert alert-danger">Failed to set election mode. Please try again.</div>';
+            }
+        };
+    </script>
+</body>
+</html>

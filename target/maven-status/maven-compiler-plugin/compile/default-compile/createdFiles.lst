@@ -2,6 +2,7 @@ com\example\voting\UserService.class
 com\example\voting\UserDao.class
 com\example\voting\LoginServlet.class
 com\example\voting\AdminLoginServlet.class
+com\example\voting\SetElectionModeServlet.class
 com\example\voting\RegisterCandidateServlet.class
 com\example\voting\VoteService.class
 com\example\voting\DatabaseConnectionTest.class
