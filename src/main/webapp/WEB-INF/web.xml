@@ -28,30 +28,6 @@
         <url-pattern>/vote</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>AdminLoginServlet</servlet-name>
-        <servlet-class>com.example.voting.AdminLoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AdminLoginServlet</servlet-name>
-        <url-pattern>/admin_login</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>AddAdminServlet</servlet-name>
-        <servlet-class>com.example.voting.AddAdminServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddAdminServlet</servlet-name>
-        <url-pattern>/add_admin</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegisterCandidateServlet</servlet-name>
-        <servlet-class>com.example.voting.RegisterCandidateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterCandidateServlet</servlet-name>
-        <url-pattern>/register_candidate</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>SetElectionModeServlet</servlet-name>
         <servlet-class>com.example.voting.SetElectionModeServlet</servlet-class>
     </servlet>

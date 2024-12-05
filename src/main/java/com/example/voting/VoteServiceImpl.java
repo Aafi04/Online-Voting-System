@@ -1,6 +1,9 @@
 package com.example.voting;
 
+import java.sql.SQLException;
+
 public class VoteServiceImpl implements VoteService {
+
     private final VoteDao voteDao;
 
     public VoteServiceImpl(VoteDao voteDao) {
@@ -8,7 +11,7 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public void saveVote(Vote vote) {
-        voteDao.saveVote(vote);
+    public void recordVote(String username, int candidateId) throws SQLException {
+        voteDao.recordVote(username, candidateId);
     }
 }
