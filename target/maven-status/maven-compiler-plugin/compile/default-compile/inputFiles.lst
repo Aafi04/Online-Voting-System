@@ -16,9 +16,7 @@ C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\JdbcUs
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\DatabaseConnectionTest.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\RegisterCandidateServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteServlet.java
-C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\ChangePasswordServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\VoteDao.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\AddAdminServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\GetCompiledResultsServlet.java
 C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\SetElectionModeServlet.java
-C:\Users\Aafi\Desktop\onlinevotingsystem\src\main\java\com\example\voting\UpdateProfileServlet.java
