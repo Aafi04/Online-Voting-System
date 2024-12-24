@@ -137,6 +137,26 @@
             // Perform any necessary logout operations here (e.g., clearing session)
             window.location.href = 'welcome.html';
         };
+
+        // Update voter profile
+        function updateVoterProfile(name, dateOfBirth, city, contact, password) {
+            fetch('/update_voter_profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name, date_of_birth: dateOfBirth, city: city, contact: contact, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Profile updated successfully!');
+                } else {
+                    alert('Failed to update profile. Please try again.');
+                }
+            })
+            .catch(error => console.error('Error updating profile:', error));
+        }
     </script>
 </body>
 </html>
